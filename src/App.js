@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Nutrition } from "./Nutrition";
 import { LoaderPage } from "./LoaderPage";
+import Swal from 'sweetalert2';
+
 
 function App() {
 
@@ -32,8 +34,13 @@ function App() {
       const data = await response.json();
       setMyNutrition(data);
     } else {
+      
       setStateLoader(false);
-      alert('ingredients entered incorrectly');
+Swal.fire({
+  title: "Attention !",
+  text: "Please provide all necessary details in the input area.",
+  icon: "warning"
+})
     }
   }
 
@@ -74,27 +81,38 @@ function App() {
       </form>
       </div>
 
+
       <div className="nutrition">
       {myNutrition && (
+        <div > 
+        <div className='first-row'>
+        <div className='div1'>
+          <p><b>Total Protein:</b> {myNutrition.totalNutrients.PROCNT.quantity.toFixed(2)} {myNutrition.totalNutrients.PROCNT.unit}</p>
+        </div>
+        <div className='div1'>
+          <p><b>Total Calories:</b> {myNutrition.calories.toFixed(2)} kcal</p>
+        </div>
+        <div className='div1'>
+          <p><b>Total Fat:</b> {myNutrition.totalNutrients.FAT.quantity.toFixed(2)} {myNutrition.totalNutrients.FAT.unit}</p>
+        </div>
+        </div>
       <div className="backgr">
-        {myNutrition && <p><b>{myNutrition.calories}kcal</b></p>}
+        {myNutrition && <p><b>{myNutrition.calories.toFixed(2)}kcal</b></p>}
         {myNutrition && Object.values(myNutrition.totalNutrients)
             .map(({ label, quantity, unit },index) =>
             <Nutrition
               key={index}
                 label={label}
-                quantity={quantity}
+                quantity={quantity.toFixed(2)}
                 unit={unit}
-              />
-            )
-        }
+               />
+                )
+              }
+            </div>
+          </div>
+        )}
       </div>
-       )}
-      </div>
-      
-      </div>
-      
+    </div>
   );
 }
-
 export default App;
