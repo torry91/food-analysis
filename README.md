@@ -1,6 +1,8 @@
 ## Nutrition Analysis App
 This application allows users to analyze the nutrition content of various food ingredients.
-<img width="1231" alt="Untitled" src="https://github.com/torry91/food-analysis/assets/149702982/0e28781f-2319-47cb-a9e7-4f6897d12c2f">
+<img width="1204" alt="Untitled" src="https://github.com/torry91/food-analysis/assets/149702982/8434dc1f-1c85-45ef-ac80-dc6dde5b5827">
+
+
 ## Usage
 Enter the desired food ingredients in the input field. For example, 1 avocado, 1 broccoli.
 Click the "Search" button.
